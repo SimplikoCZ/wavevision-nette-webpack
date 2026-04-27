@@ -9,9 +9,19 @@ src=src
 temp=temp
 tests=tests
 dirs:=$(src) $(tests) $(examples)
+docker-run=docker compose run --rm test
 
 all:
 	 @$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
+
+docker-up:
+	docker compose up -d --build
+
+docker-down:
+	docker compose down
+
+docker-test:
+	$(docker-run) make fix
 
 # Setup
 
@@ -44,7 +54,7 @@ phpstan:
 # Tests
 
 test:
-	$(bin)/phpunit
+	$(docker-run) $(bin)/phpunit
 
 test-coverage: reset
 	$(bin)/phpunit --coverage-html=$(coverage)

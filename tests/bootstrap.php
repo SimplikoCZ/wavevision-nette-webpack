@@ -7,7 +7,7 @@ use Wavevision\NetteWebpackExamples\Bootstrap;
 require __DIR__ . '/../vendor/autoload.php';
 Configuration::setup(
 	function (): Configurator {
-		$configurator = Bootstrap::createConfigurator();
+		$configurator = Bootstrap::createConfigurator(false);
 		$configurator->addParameters(['wwwDir' => Bootstrap::rootDir()->string('examples', 'www')]);
 		return $configurator;
 	}

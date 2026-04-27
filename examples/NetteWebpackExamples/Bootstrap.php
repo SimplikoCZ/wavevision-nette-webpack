@@ -16,11 +16,13 @@ class Bootstrap
 		return self::createConfigurator();
 	}
 
-	public static function createConfigurator(): Configurator
+	public static function createConfigurator(bool $enableTracy = true): Configurator
 	{
 		$configurator = new Configurator();
 		$rootDir = self::rootDir();
-		$configurator->enableTracy($rootDir->string('examples', 'log'));
+		if ($enableTracy) {
+			$configurator->enableTracy($rootDir->string('examples', 'log'));
+		}
 		$configurator
 			->setTimeZone('Europe/Prague')
 			->setTempDirectory($rootDir->string('temp'))
