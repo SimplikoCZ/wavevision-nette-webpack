@@ -1,6 +1,6 @@
 {
   "name": "@wavevision/nette-webpack",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "description": "Webpack adapter for Nette framework.",
   "keywords": [
     "nette",
@@ -34,7 +34,7 @@
     "@types/mini-css-extract-plugin": "^2.5.0",
     "@types/node": "^20.0.0",
     "@types/webpack": "^5.28.0",
-    "@wavevision/coding-standard": "^7.0.0",
+    "@wavevision/coding-standard": "https://github.com/SimplikoCZ/wavevision-coding-standard.git",
     "clean-webpack-plugin": "^4.0.0",
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
