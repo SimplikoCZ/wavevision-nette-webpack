@@ -9,9 +9,10 @@
   "compilerOptions": {
     "allowJs": false,
     "declaration": true,
-    "module": "CommonJS",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
     "outDir": "./dist",
-    "resolveJsonModule": false,
-    "target": "ES5"
+    "resolveJsonModule": false
   }
 }

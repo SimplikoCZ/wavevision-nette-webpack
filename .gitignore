@@ -5,7 +5,6 @@
 !/.idea/codeStyles/Project.xml
 .eslintcache
 .phpunit.result.cache
-/dist
 /node_modules
 /temp
 /vendor
