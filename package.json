@@ -1,6 +1,6 @@
 {
   "name": "@wavevision/nette-webpack",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Webpack adapter for Nette framework.",
   "keywords": [
     "nette",
@@ -61,6 +61,7 @@
     "webpack": "^5"
   },
   "scripts": {
+    "prepack": "yarn build",
     "build": "NODE_ENV=production run-s clean ts-build",
     "ci": "run-s ts eslint prettier test-coverage-report",
     "clean": "rm -rf dist/*",
@@ -73,7 +74,6 @@
     "postversion-publish": "yarn publish --access public --new-version $npm_package_version",
     "postversion-push": "git push",
     "postversion-push-tags": "yarn postversion-push --tags",
-    "prepare": "npm run build",
     "prettier": "prettier '**/*.{md,js,ts}' --check",
     "prettier-fix": "yarn prettier --write",
     "preversion": "run-s fix make",
