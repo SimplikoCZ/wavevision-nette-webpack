@@ -1,4 +1,7 @@
-export const formatManifestChunks = (entries, manifest) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getManifestOptions = exports.generateManifest = exports.formatManifestChunks = void 0;
+const formatManifestChunks = (entries, manifest) => {
     const chunks = {};
     for (const asset in manifest) {
         const name = manifest[asset];
@@ -14,21 +17,24 @@ export const formatManifestChunks = (entries, manifest) => {
     }
     return chunks;
 };
-export const generateManifest = (seed, files, entries) => {
+exports.formatManifestChunks = formatManifestChunks;
+const generateManifest = (seed, files, entries) => {
     const manifest = files.reduce((manifest, { name, path }) => ({
         ...manifest,
         [name]: path,
     }), seed);
     return Object.assign(manifest, {
-        chunks: formatManifestChunks(entries, manifest),
+        chunks: (0, exports.formatManifestChunks)(entries, manifest),
     });
 };
-export const getManifestOptions = (options) => {
+exports.generateManifest = generateManifest;
+const getManifestOptions = (options) => {
     const generator = options.generate;
-    let currentGenerator = generateManifest;
+    let currentGenerator = exports.generateManifest;
     if (typeof generator === 'function') {
-        currentGenerator = (seed, files, entries) => generator(generateManifest(seed, files, entries), files, entries);
+        currentGenerator = (seed, files, entries) => generator((0, exports.generateManifest)(seed, files, entries), files, entries);
     }
     return { ...options, generate: currentGenerator };
 };
+exports.getManifestOptions = getManifestOptions;
 //# sourceMappingURL=utils.js.map
